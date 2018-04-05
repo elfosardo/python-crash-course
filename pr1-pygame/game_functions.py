@@ -6,7 +6,8 @@ from alien import Alien
 from time import sleep
 
 
-def check_keydown_events(ai_settings, event, screen, stats, play_button, ship, aliens, bullets):
+def check_keydown_events(ai_settings, event, screen, stats, play_button,
+                         ship, aliens, bullets):
     """Respond to keypresses."""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
@@ -36,18 +37,20 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets):
+def check_events(ai_settings, screen, stats, play_button, ship,
+                 aliens, bullets):
     """Respond to keypresses and mouse events."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(ai_settings, event, screen, stats, play_button, ship, aliens,
-                                 bullets)
+            check_keydown_events(ai_settings, event, screen, stats,
+                                 play_button, ship, aliens, bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets)
+            check_play_button(ai_settings, screen, stats, play_button,
+                              ship, aliens, bullets)
 
 
 def start_game(ai_settings, screen, stats, ship, aliens, bullets):
@@ -72,7 +75,8 @@ def start_game(ai_settings, screen, stats, ship, aliens, bullets):
         ship.center_ship()
 
 
-def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets):
+def check_play_button(ai_settings, screen, stats, play_button, ship,
+                      aliens, bullets):
     mouse_x, mouse_y = pygame.mouse.get_pos()
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked:
@@ -135,7 +139,8 @@ def get_number_aliens_x(ai_settings, alien_width):
 
 def get_number_rows(ai_settings, ship_height, alien_height):
     """Determine the number of rows of aliens that fit on the screen."""
-    available_space_y = (ai_settings.screen_height - (3 * alien_height) - ship_height)
+    available_space_y = (ai_settings.screen_height - (3 * alien_height) -
+                         ship_height)
     number_rows = int(available_space_y / (2 * alien_height))
     return number_rows
 
