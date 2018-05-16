@@ -1,9 +1,9 @@
 import pygal
 from die import Die
 
-# Create a D6.
+# Create a D6 and a D10
 die_1 = Die()
-die_2 = Die()
+die_2 = Die(10)
 
 # Make some rolls, and store results in a list.
 results = []
@@ -24,10 +24,11 @@ for value in range(2, max_result+1):
 # Visualize the results.
 histogram = pygal.Bar()
 
-histogram.title = 'Results of rolling two D6 50,000 times.'
-histogram.x_labels = [x for x in range(2, max_result+1)]
+histogram.title = 'Results of rolling a D6 and a D10 50,000 times.'
+histogram.x_labels = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+                      '13', '14', '15', '16']
 histogram.x_title = 'Result'
 histogram.y_title = 'Frequency of Result'
 
-histogram.add('2D6', frequencies)
-histogram.render_to_file('dice_visual.svg')
+histogram.add('D6 + D10', frequencies)
+histogram.render_to_file('different_dice.svg')
