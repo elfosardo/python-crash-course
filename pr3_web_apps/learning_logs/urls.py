@@ -13,5 +13,5 @@ urlpatterns = [
     path('topics/', views.topics, name='topics'),
 
     # Detail page for a single topic
-    path('topics/(?P<topic_id>\d+)/', views.topic, name='topic')
+    path('topics/<topic_id>/', views.topic, name='topic')
  ]
