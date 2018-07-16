@@ -106,3 +106,7 @@ ENV/
 # images
 *.svg
 *.png
+
+# sqlite db
+*.sqlite3
+
